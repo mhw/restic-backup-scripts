@@ -18,7 +18,7 @@ Create a `~/.env.restic` file and fill it in with the key needed to
 access your storage, and the restic repository in it:
 
 ```
-cp env.sample.restic ~/.env.restic
+cp sample.env.restic ~/.env.restic
 dd if=/dev/urandom bs=15 count=1 2>/dev/null | openssl enc -a >$HOME/.restic.pwd
 vi ~/.env.restic
 ```
