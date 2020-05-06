@@ -49,3 +49,11 @@ alter default privileges in schema public grant select on sequences to restic;
 
 Note that you will need to run these commands on any additional schemas
 used in your databases, and for each database to be dumped.
+
+## Scheduling
+
+Edit the user's crontab: `crontab -e`. Use a line like this:
+
+```
+30 2 * * * /home/restic/backup-scripts/all-backups.sh
+```
