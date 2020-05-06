@@ -1,11 +1,14 @@
-#!/bin/bash -x
-#
+#!/bin/bash
+
+cd `dirname $0`
+
+. ./common.sh
 
 TAG=mysql
 
-for DB in $(mysql -u$USER -BNe 'show databases' | grep -Ev 'mysql|information_schema|performance_schema')
+for DB in $(mysql -u$LOGNAME -BNe 'show databases' | grep -Ev 'mysql|information_schema|performance_schema')
 do
-	mysqldump -u$USER --skip-dump-date --force $DB | \
+	mysqldump -u$LOGNAME --skip-dump-date --force $DB | \
 		gzip --rsyncable | \
 		restic backup \
 			--stdin --stdin-filename mysql/$DB.sql.gz \
