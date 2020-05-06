@@ -4,7 +4,7 @@ cd `dirname $0`
 
 . ./common.sh
 
-TAG=file
+TAG=files
 
 restic backup \
 	--tag "$TAG" \
