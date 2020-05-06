@@ -10,6 +10,5 @@ do
 		restic backup \
 			--stdin --stdin-filename mysql/$DB.sql.gz \
 		       	--tag "$TAG" \
-		       	--tag "$DB" \
-			--quiet
+		       	--tag "$DB"
 done
