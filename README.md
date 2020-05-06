@@ -32,3 +32,20 @@ easily from the command line.
 ## MySQL Set Up
 
 ## PostgreSQL Set Up
+
+Create a PostgreSQL role for the Unix user, and grant the necessary
+privileges:
+
+```
+create role restic with login;
+grant connect on database app_production to restic;
+\c app_production
+grant usage on schema public to restic;
+grant select on all tables in schema public to restic;
+alter default privileges in schema public grant select on tables to restic;
+grant select on all sequences in schema public to restic;
+alter default privileges in schema public grant select on sequences to restic;
+```
+
+Note that you will need to run these commands on any additional schemas
+used in your databases, and for each database to be dumped.
