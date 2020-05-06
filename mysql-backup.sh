@@ -5,7 +5,7 @@ TAG=mysql
 
 for DB in $(mysql -u$USER -BNe 'show databases' | grep -Ev 'mysql|information_schema|performance_schema')
 do
-	mysqldump -u$USER --force $DB | \
+	mysqldump -u$USER --skip-dump-date --force $DB | \
 		gzip --rsyncable | \
 		restic backup \
 			--stdin --stdin-filename mysql/$DB.sql.gz \
