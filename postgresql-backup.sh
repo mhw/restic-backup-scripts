@@ -14,6 +14,6 @@ do
 		gzip --rsyncable | \
 		restic backup \
 			--stdin --stdin-filename postgresql/$DB.sql.gz \
-		       	--tag "$TAG" \
-		       	--tag "$DB"
+			--tag "$TAG" \
+			--tag "$DB"
 done

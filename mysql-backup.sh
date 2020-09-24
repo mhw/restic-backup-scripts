@@ -12,6 +12,6 @@ do
 		gzip --rsyncable | \
 		restic backup \
 			--stdin --stdin-filename mysql/$DB.sql.gz \
-		       	--tag "$TAG" \
-		       	--tag "$DB"
+			--tag "$TAG" \
+			--tag "$DB"
 done
