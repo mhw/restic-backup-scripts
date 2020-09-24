@@ -103,7 +103,7 @@ Update the variables in the Makefile to choose a different platform or version.
 Then use a crontab line like this:
 
 ```
-30 2 * * * cd /home/restic/restic-backup-scripts; ./runitor -uuid 2f9-a5c-0123 -- ./all-backups.sh
+30 2 * * * cd /home/restic/restic-backup-scripts; ./runitor -uuid 2f9-a5c-0123 -silent -- ./all-backups.sh
 ```
 
 Substitute a valid check UUID from healthchecks.io in the command above.
