@@ -91,3 +91,19 @@ Edit the user's crontab: `crontab -e`. Use a line like this:
 ```
 30 2 * * * /home/restic/restic-backup-scripts/all-backups.sh
 ```
+
+## Healthchecks.io (Optional)
+
+To use [healthchecks.io](https://healthchecks.io/) to monitor your backups
+use the `Makefile` to download a copy of
+[runitor](https://github.com/bdd/runitor).
+Just run `make` and it should pull a release down.
+Update the variables in the Makefile to choose a different platform or version.
+
+Then use a crontab line like this:
+
+```
+30 2 * * * cd /home/restic/restic-backup-scripts; ./runitor -uuid 2f9-a5c-0123 -- ./all-backups.sh
+```
+
+Substitute a valid check UUID from healthchecks.io in the command above.
