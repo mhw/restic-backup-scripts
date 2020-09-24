@@ -12,7 +12,7 @@ Main features:
 * Optional integration with [healthchecks.io](https://healthchecks.io/)
 * Handles transient files with a separate retention policy
 
-Currently in use in production backing up a server to
+Currently in use in production backing up an Ubuntu 18.04 server to
 [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html).
 
 ## Getting Started
