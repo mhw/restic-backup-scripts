@@ -53,6 +53,25 @@ replace setting as appropriate for your chosen storage provider.
 Source `.env.restic` from `.bashrc` if you want to be able to run restic
 easily from the command line.
 
+Comment out or remove lines in `all-backups.sh` that you do not need.
+For example, if you do not have a MySQL database, comment out the
+`./mysql-backup.sh` line.
+
+## Files Set Up
+
+Copy the `sample.files-backup.sh` file to `sample.files-backup.sh`:
+
+```
+cp sample.files-backup.sh sample.files-backup.sh
+```
+
+Customise the `restic` command lines as necessary:
+replace `/where/the/important/files/are` with the path to the
+important files you need to backup.
+Update or remove the second `restic` command and the lines
+mentioning `transient-log-files` if you do not need an alternative
+retention policy for transient files.
+
 ## MySQL Set Up
 
 Create a MySQL user for the Unix user, and grant the necessary
