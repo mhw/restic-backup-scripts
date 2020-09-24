@@ -8,6 +8,13 @@ Create a Unix user who will execute the backup jobs:
 adduser --disabled-password restic
 ```
 
+Log in as that user and clone this repository:
+
+```
+su - restic
+git clone https://github.com/mhw/restic-backup-scripts
+```
+
 Download the latest restic binary from the project's
 [releases page](https://github.com/restic/restic/releases/latest).
 Install it in the `bin` directory of the user you just created.
@@ -18,8 +25,9 @@ Create a `~/.env.restic` file and fill it in with the key needed to
 access your storage, and the restic repository in it:
 
 ```
+cd restic-backup-scripts
 cp sample.env.restic ~/.env.restic
-dd if=/dev/urandom bs=15 count=1 2>/dev/null | openssl enc -a >$HOME/.restic.pwd
+dd if=/dev/urandom bs=15 count=1 2>/dev/null | openssl enc -a >~/.restic.pwd
 vi ~/.env.restic
 ```
 
@@ -81,5 +89,5 @@ role.
 Edit the user's crontab: `crontab -e`. Use a line like this:
 
 ```
-30 2 * * * /home/restic/backup-scripts/all-backups.sh
+30 2 * * * /home/restic/restic-backup-scripts/all-backups.sh
 ```
