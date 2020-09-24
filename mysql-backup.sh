@@ -8,7 +8,7 @@ cd `dirname $0`
 
 TAG=mysql
 
-for DB in $(mysql -u$LOGNAME -BNe 'show databases' | grep -Ev 'mysql|information_schema|performance_schema')
+for DB in $(mysql -u$LOGNAME -BNe 'show databases' | grep -Ev 'mysql|information_schema|performance_schema|sys')
 do
 	mysqldump -u$LOGNAME --skip-dump-date --force $DB | \
 		gzip --rsyncable | \
