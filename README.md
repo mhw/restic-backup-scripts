@@ -1,4 +1,19 @@
-# Backup Scripts
+# Restic Backup Scripts
+
+This repository contains a set of shell scripts to maintain backups of a server
+using [restic](https://restic.net/).
+Main features:
+
+* Filesystem backups with restic
+* SQL backups of MySQL databases using `mysqldump`
+* SQL backups of PostgreSQL databases using `pgdump`
+* Intended to run daily from `cron`
+* Will purge old backups to a retention policy
+* Optional integration with [healthchecks.io](https://healthchecks.io/)
+* Handles transient files with a separate retention policy
+
+Currently in use in production backing up a server to
+[Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html).
 
 ## Getting Started
 
