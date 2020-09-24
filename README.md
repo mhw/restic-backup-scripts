@@ -107,3 +107,15 @@ Then use a crontab line like this:
 ```
 
 Substitute a valid check UUID from healthchecks.io in the command above.
+
+## Dealing With Transient Files
+
+You might have files that change entirely between backups, such as a log
+file that is rotated nightly and compressed a day or so later.
+Backing this file up every day will make your restic repository grow
+rapidly.
+One strategy is to list these transient files in a file that is passed
+to restic's `--exclude-file` option,
+then run a second backup with an additional `transient` tag passing the same
+file to the `--files-from` option.
+This is illustrated in the `sample.files-backup.sh` script.

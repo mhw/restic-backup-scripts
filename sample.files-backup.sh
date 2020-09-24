@@ -10,4 +10,11 @@ TAG=files
 
 restic backup \
 	--tag "$TAG" \
-	/where/the/important/files/are
+	/where/the/important/files/are \
+	--exclude .../shared/log/transient-log-files \
+	--exclude-file .../shared/log/transient-log-files
+
+restic backup \
+	--tag "$TAG" \
+	--tag "transient" \
+	--files-from .../shared/log/transient-log-files
