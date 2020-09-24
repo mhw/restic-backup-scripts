@@ -41,12 +41,29 @@ grant lock tables, select, show view, event, trigger, process on app_production.
 ## PostgreSQL Set Up
 
 Create a PostgreSQL role for the Unix user, and grant the necessary
-privileges:
+privileges. Connecting as the `postgres` user:
 
 ```
 create role restic with login;
+```
+
+For each database to be dumped (`app_production` below):
+
+```
 grant connect on database app_production to restic;
 \c app_production
+set role app_production;
+```
+
+(This assumes your data is stored in a database named `app_production`,
+and that the role `app_production` owns the schema objects within the
+database.)
+
+Typically all an application's schema objects will be in the `public` schema.
+To give `restic` access to these objects run the following commands for the
+`public` schema and any additional schemas used in your database.
+
+```
 grant usage on schema public to restic;
 grant select on all tables in schema public to restic;
 alter default privileges in schema public grant select on tables to restic;
@@ -54,8 +71,10 @@ grant select on all sequences in schema public to restic;
 alter default privileges in schema public grant select on sequences to restic;
 ```
 
-Note that you will need to run these commands on any additional schemas
-used in your databases, and for each database to be dumped.
+The `alter default privileges` commands included above will grant the
+necessary privileges on schema objects created in the future,
+but **only** when those schema objects are created by the `app_production`
+role.
 
 ## Scheduling
 
