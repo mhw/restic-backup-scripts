@@ -31,6 +31,13 @@ easily from the command line.
 
 ## MySQL Set Up
 
+Create a MySQL user for the Unix user, and grant the necessary
+privileges:
+
+```
+grant lock tables, select, show view, event, trigger, process on app_production.* to 'restic'@'localhost';
+```
+
 ## PostgreSQL Set Up
 
 Create a PostgreSQL role for the Unix user, and grant the necessary
