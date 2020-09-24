@@ -8,18 +8,19 @@ Create a Unix user who will execute the backup jobs:
 adduser --disabled-password restic
 ```
 
-Log in as that user and clone this repository:
+Follow the instructions
+[in the restic documentation](https://restic.readthedocs.io/en/stable/080_examples.html#backing-up-your-system-without-running-restic-as-root)
+to download the latest restic binary from the project's
+[releases page](https://github.com/restic/restic/releases/latest),
+install it in the `bin` directory of the user you just created,
+and give the `restic` binary permission to access the filesystem as root.
+
+Now switch user to the `restic` user and clone this repository:
 
 ```
 su - restic
 git clone https://github.com/mhw/restic-backup-scripts
 ```
-
-Download the latest restic binary from the project's
-[releases page](https://github.com/restic/restic/releases/latest).
-Install it in the `bin` directory of the user you just created.
-Give the binary permission to access the filesystem as explained
-[in the restic documentation](https://restic.readthedocs.io/en/stable/080_examples.html#backing-up-your-system-without-running-restic-as-root).
 
 Create a `~/.env.restic` file and fill it in with the key needed to
 access your storage, and the restic repository in it:
