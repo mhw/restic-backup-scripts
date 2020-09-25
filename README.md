@@ -59,10 +59,10 @@ For example, if you do not have a MySQL database, comment out the
 
 ## Files Set Up
 
-Copy the `sample.files-backup.sh` file to `sample.files-backup.sh`:
+Copy the `sample.files-backup.sh` file to `files-backup.sh`:
 
 ```
-cp sample.files-backup.sh sample.files-backup.sh
+cp sample.files-backup.sh files-backup.sh
 ```
 
 Customise the `restic` command lines as necessary:
