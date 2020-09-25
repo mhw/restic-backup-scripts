@@ -19,3 +19,7 @@ then
 	echo The scripts do not pass the password as a parameter.
 	exit 2
 fi
+
+[ -d "log" ] || mkdir log
+
+LOG="log/$(basename $0)-$(date +%Y-%m-%d).log"
