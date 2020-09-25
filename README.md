@@ -44,7 +44,20 @@ access your storage, and the restic repository in it:
 cd restic-backup-scripts
 cp sample.env.restic ~/.env.restic
 dd if=/dev/urandom bs=15 count=1 2>/dev/null | openssl enc -a >~/.restic.pwd
+chmod o-r ~/.restic.pwd
 vi ~/.env.restic
+```
+
+**Note**: the contents of the `~/.restic.pwd` file is required to access
+the whole restic repository.
+Take appropriate precautions to protect it.
+
+Once you've got the environment set up correctly you'll need to initialise
+the restic repository:
+
+```
+. ~/.env.restic
+restic init
 ```
 
 The sample assumes Backblaze B2 is being used as restic storage provider;
