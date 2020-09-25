@@ -1,3 +1,11 @@
+set -e -E -o pipefail
+
+err_exit() {
+	echo "$0: exit with error on line $1" >&2
+}
+
+trap 'err_exit $LINENO' ERR
+
 [ -f "$HOME/.env.restic" ] && . $HOME/.env.restic
 
 if [ -z "$LOGNAME" ]
