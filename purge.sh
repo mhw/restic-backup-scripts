@@ -31,5 +31,4 @@ restic forget $DRY_RUN $COMPACT \
 if [ "$1" = '--really' ]
 then
 	restic prune
-	restic check
 fi
