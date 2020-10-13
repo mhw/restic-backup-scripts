@@ -58,6 +58,8 @@ the restic repository:
 ```
 . ~/.env.restic
 restic init
+# if using a separate repository for transient files
+restic -r $RESTIC_TRANSIENT_REPOSITORY init
 ```
 
 The sample assumes Backblaze B2 is being used as restic storage provider;
