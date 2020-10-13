@@ -9,3 +9,4 @@ cd `dirname $0`
 ./files-backup.sh
 
 ./purge.sh --really
+# ./push.sh
