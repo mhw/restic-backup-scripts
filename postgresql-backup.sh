@@ -6,6 +6,8 @@ cd `dirname $0`
 
 TAG=postgresql
 
+use_archive_repository
+
 for DB in $(psql -l | \
 	awk '{print $1}' | \
 	grep -Ev "^(List|Name|-*\+|postgres|template|\||\(|$)")
