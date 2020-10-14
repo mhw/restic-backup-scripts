@@ -45,7 +45,7 @@ prune() {
 if [ "$1" = '--really' ]
 then
 	forget >$LOG
-	egrep '^(forget|Applying|(keep|remove) \d+ snapshot)' $LOG
+	egrep '^(forget|Applying|(keep|remove) [[:digit:]]+ snapshot)' $LOG
 	prune
 else
 	forget
