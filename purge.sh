@@ -29,7 +29,10 @@ forget() {
 	if [ -n "$RESTIC_REPOSITORY" ]
 	then
 		echo forget transient files
+		# Don't group transient files by path as the paths may change from one
+		# snapshot to the next (e.g. paths with dates in them).
 		restic forget $DRY_RUN $COMPACT \
+			--group-by host \
 			--tag transient \
 			--keep-daily 2
 	fi
