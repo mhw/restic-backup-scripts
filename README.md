@@ -93,8 +93,13 @@ Create a MySQL user for the Unix user, and grant the necessary
 privileges:
 
 ```
-grant lock tables, select, show view, event, trigger, process on app_production.* to 'restic'@'localhost';
+create user 'restic'@'localhost';
+grant process on *.* to 'restic'@'localhost';
+grant lock tables, select, show view, event, trigger on app_production.* to 'restic'@'localhost';
 ```
+
+The global `PROCESS` privilege is required to use `mysqldump` without the
+`--no-tablespaces` option.
 
 ## PostgreSQL Set Up
 
